@@ -1,0 +1,64 @@
+exec gentoo-pipewire-launcher restart &
+exec swaybg --image  $HOME/wallpaper4.png &
+exec gnome-keyring-daemon &
+exec /usr/libexec/polkit-gnome-authentication-agent-1 &
+
+workspace_layout tabbed
+set $mod Mod4
+
+font pango: fontawesome heavy 12
+
+bindsym $mod+Shift+Return exec kitty
+bindsym $mod+p exec dmenu-wl_run -i
+bindsym $mod+Shift+c kill
+bindsym $mod+Shift+r reload
+
+bindsym $mod+Shift+space floating toggle
+
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+
+bindsym Mod1+Left focus left
+bindsym Mod1+Right focus right
+
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+
+bindsym $mod+Shift+q exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+floating_modifier Mod4
+bindsym --release Print exec grimshot copy area
+
+# class                 border  backgr. text    indicator child_border
+client.focused          #222222 #222222 #cccccc #2e9ef4   #222222
+client.focused_inactive #333333 #333333 #cccccc #484e50   #333333
+client.unfocused        #333333 #333333 #cccccc #292d2e   #333333
+client.urgent           #2f343a #900000 #ffffff #900000   #900000
+client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+
+client.background       #ffffff
+
+bar {
+position bottom
+status_command while ~/.config/sway/status.sh; do sleep 1; done
+workspace_min_width 50
+font "fontawesome 14 bold Ultra-Expanded"
+colors {
+statusline #888888
+background #222222
+focused_workspace #7445c4 #7445c4 #cccccc
+}
+}
